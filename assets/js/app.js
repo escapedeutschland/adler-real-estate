@@ -80,6 +80,33 @@
   }
   wireDemoForm("signup", "formSuccess");
   wireDemoForm("contactForm", "contactSuccess");
+  wireDemoForm("projectSignup", "projectSuccess");
+
+  /* ---------- Count-up numbers ---------- */
+  function countUp(el) {
+    var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+    var prefix = el.getAttribute("data-prefix") || "";
+    var suffix = el.getAttribute("data-suffix") || "";
+    if (target === 0) { el.textContent = prefix + "0" + suffix; return; }
+    var dur = 1500, start = null;
+    function step(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+      el.textContent = prefix + Math.round(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var countEls = document.querySelectorAll(".trust-num[data-count]");
+  if (countEls.length) {
+    var co = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { countUp(en.target); co.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    countEls.forEach(function (el) { co.observe(el); });
+  }
 
   /* ---------- Year ---------- */
   document.getElementById("year").textContent = new Date().getFullYear();

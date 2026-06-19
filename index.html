@@ -27,10 +27,11 @@
       </a>
 
       <nav class="nav" id="nav">
+        <a href="#kaufen" data-i18n="nav.guide">Ratgeber</a>
         <a href="#angebot" data-i18n="nav.offer">Angebot</a>
         <a href="#objekte" data-i18n="nav.listings">Objekte</a>
         <a href="#ueber" data-i18n="nav.about">Über uns</a>
-        <a href="#newsletter" data-i18n="nav.news">Newsletter</a>
+        <a href="#projekt" data-i18n="nav.project">Projekt</a>
         <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
       </nav>
 
@@ -67,10 +68,43 @@
     <!-- Trust bar -->
     <section class="trust" id="trust">
       <div class="container trust-grid">
-        <div class="trust-item reveal"><span class="trust-num">20+</span><span class="trust-lbl" data-i18n="trust.years">Jahre vor Ort in Paraguay</span></div>
-        <div class="trust-item reveal"><span class="trust-num">3</span><span class="trust-lbl" data-i18n="trust.lang">Sprachen: DE · ES · EN</span></div>
-        <div class="trust-item reveal"><span class="trust-num">100%</span><span class="trust-lbl" data-i18n="trust.local">Persönlich &amp; vor Ort</span></div>
-        <div class="trust-item reveal"><span class="trust-num">0€</span><span class="trust-lbl" data-i18n="trust.first">Unverbindliches Erstgespräch</span></div>
+        <div class="trust-item reveal"><span class="trust-num" data-count="20" data-suffix="+">0+</span><span class="trust-lbl" data-i18n="trust.years">Jahre vor Ort in Paraguay</span></div>
+        <div class="trust-item reveal"><span class="trust-num" data-count="3">0</span><span class="trust-lbl" data-i18n="trust.lang">Sprachen: DE · ES · EN</span></div>
+        <div class="trust-item reveal"><span class="trust-num" data-count="100" data-suffix="%">0%</span><span class="trust-lbl" data-i18n="trust.local">Persönlich &amp; vor Ort</span></div>
+        <div class="trust-item reveal"><span class="trust-num" data-count="0" data-suffix="€">0€</span><span class="trust-lbl" data-i18n="trust.first">Unverbindliches Erstgespräch</span></div>
+      </div>
+    </section>
+
+    <!-- So kauft man in Paraguay (Aufklärung / Säule 1) -->
+    <section class="section section-alt" id="kaufen">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-i18n="buy.eyebrow">Aufklärung &amp; Sicherheit</p>
+          <h2 data-i18n="buy.title">So kauft man Immobilien in Paraguay</h2>
+          <p class="section-intro" data-i18n="buy.intro">Aus der Ferne zu kaufen macht nervös — zu Recht. Deshalb legen wir den gesamten Ablauf offen. Transparenz ist bei uns kein Versprechen, sondern die Grundlage.</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal">
+            <span class="step-num">01</span>
+            <h3 data-i18n="buy.s1.t">Ablauf verstehen</h3>
+            <p data-i18n="buy.s1.d">Vom ersten Kontakt über die Besichtigung bis zum Notartermin — Sie wissen jederzeit, was als Nächstes passiert.</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-num">02</span>
+            <h3 data-i18n="buy.s2.t">Titel &amp; Escribano</h3>
+            <p data-i18n="buy.s2.d">Wir prüfen den Grundbuch-Titel und arbeiten mit einem unabhängigen Escribano (Notar), damit Eigentum rechtssicher übergeht.</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-num">03</span>
+            <h3 data-i18n="buy.s3.t">Kosten im Klartext</h3>
+            <p data-i18n="buy.s3.d">Kaufpreis, Steuern, Notar- und Nebenkosten — vorab und vollständig. Keine Überraschungen nach Unterschrift.</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-num">04</span>
+            <h3 data-i18n="buy.s4.t">Betrugsfallen vermeiden</h3>
+            <p data-i18n="buy.s4.d">Wir kennen die typischen Fallstricke beim Kauf aus dem Ausland und sagen offen, wovon man die Finger lässt.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -178,6 +212,29 @@
       </div>
     </section>
 
+    <!-- Das Projekt — Valle Ballena (Interessentenliste) -->
+    <section class="section section-alt" id="projekt">
+      <div class="container project2-inner">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="proj.eyebrow">Build in Public · Valle Ballena</p>
+          <h2 data-i18n="proj.title">Ein Projekt entsteht — bleiben Sie dabei</h2>
+          <p class="project2-text" data-i18n="proj.p1">Wir entwickeln ein Gemeinschafts-Projekt von Grund auf und zeigen ehrlich, wie es wächst. Es gibt keinen Parzellen-Shop und keinen Hochdruck.</p>
+          <p class="project2-text" data-i18n="proj.p2">Sebastian ist am Projekt beteiligt — das legen wir offen. Wer früh dabei sein möchte, trägt sich unverbindlich in die Interessentenliste ein und erhält als Erstes Bescheid, sobald Parzellen verfügbar sind.</p>
+        </div>
+
+        <form class="signup reveal" id="projectSignup" novalidate>
+          <h3 data-i18n="proj.form.title">Auf die Interessentenliste</h3>
+          <p class="signup-sub" data-i18n="proj.form.sub">Phase 1: in Verbindung bleiben. Phase 2: Erstzugang zu Parzellen.</p>
+          <div class="field"><input type="text" name="name" required data-i18n-ph="proj.form.name" placeholder="Name" /></div>
+          <div class="field"><input type="email" name="email" required data-i18n-ph="proj.form.email" placeholder="E-Mail" /></div>
+          <label class="consent"><input type="checkbox" name="consent" required /> <span data-i18n="proj.form.consent">Ich möchte Projekt-Updates erhalten und stimme der Datenschutzerklärung zu.</span></label>
+          <button type="submit" class="btn btn-gold btn-block" data-i18n="proj.form.submit">Eintragen</button>
+          <p class="form-note" data-i18n="proj.form.note">Demo-Formular — im Live-Betrieb mit Double-Opt-In (z. B. Brevo) angebunden.</p>
+          <p class="form-success" id="projectSuccess" hidden data-i18n="proj.form.success">Danke! Im Live-Betrieb erhalten Sie jetzt eine Bestätigungs-E-Mail.</p>
+        </form>
+      </div>
+    </section>
+
     <!-- Newsletter / Rundschreiben -->
     <section class="section project" id="newsletter">
       <div class="project-bg" style="background-image:url('assets/img/band-aerial.jpg')"></div>
@@ -211,8 +268,7 @@
           <h2 data-i18n="contact.title">Sprechen wir — unverbindlich</h2>
           <p class="section-intro" data-i18n="contact.intro">Am schnellsten per WhatsApp. Auf Deutsch, Spanisch oder Englisch.</p>
         </div>
-        <div class="contact-layout">
-          <!-- Kontaktformular -->
+        <div class="contact-top">
           <form class="contact-form reveal" id="contactForm" novalidate>
             <h3 data-i18n="contact.form.title">Nachricht senden</h3>
             <div class="field"><input type="text" name="name" required data-i18n-ph="contact.form.name" placeholder="Name" /></div>
@@ -220,40 +276,38 @@
               <div class="field"><input type="email" name="email" required data-i18n-ph="contact.form.email" placeholder="E-Mail" /></div>
               <div class="field"><input type="tel" name="phone" data-i18n-ph="contact.form.phone" placeholder="Telefon (optional)" /></div>
             </div>
-            <div class="field"><textarea name="message" rows="4" required data-i18n-ph="contact.form.msg" placeholder="Ihre Nachricht"></textarea></div>
+            <div class="field"><textarea name="message" rows="5" required data-i18n-ph="contact.form.msg" placeholder="Ihre Nachricht"></textarea></div>
             <label class="consent"><input type="checkbox" name="consent" required /> <span data-i18n="contact.form.consent">Ich stimme der Datenschutzerklärung zu.</span></label>
             <button type="submit" class="btn btn-gold btn-block" data-i18n="contact.form.submit">Nachricht senden</button>
             <p class="form-note" data-i18n="contact.form.note">Demo-Formular — im Live-Betrieb an einen Dienst (z. B. Brevo / Formspree) angebunden.</p>
             <p class="form-success" id="contactSuccess" hidden data-i18n="contact.form.success">Danke! Im Live-Betrieb wird Ihre Nachricht jetzt versendet.</p>
           </form>
 
-          <!-- Infos, Karte & Route -->
-          <div class="contact-info reveal">
-            <div class="info-block">
+          <aside class="contact-aside reveal">
+            <div class="aside-block">
               <h3 data-i18n="contact.info.title">Besuchen Sie uns</h3>
-              <p class="info-addr">Ruta 2 Mcal. Estigarribia<br/>Casilla de Correo 42<br/>Caacupé · Paraguay</p>
-              <ul class="info-links">
-                <li><a href="https://wa.me/595981152015" target="_blank" rel="noopener"><span>WhatsApp · Miryan</span>+595 981 15 20 15</a></li>
-                <li><a href="https://wa.me/595981897989" target="_blank" rel="noopener"><span>WhatsApp · Sebastian</span>+595 981 89 79 89</a></li>
-                <li><a href="mailto:info@adler.com.py"><span>E-Mail</span>info@adler.com.py</a></li>
-              </ul>
+              <p class="info-addr">Ruta 2 Mcal. Estigarribia c/ Capitán Caballero<br/>Casilla de Correo 42 · 3000 Caacupé<br/>Paraguay</p>
             </div>
-
-            <div class="hours">
+            <ul class="info-links">
+              <li><a href="https://wa.me/595981152015" target="_blank" rel="noopener"><span>WhatsApp · Miryan Galeano</span>+595 981 15 20 15</a></li>
+              <li><a href="https://wa.me/595981897989" target="_blank" rel="noopener"><span>WhatsApp · Sebastian Geisen</span>+595 981 89 79 89</a></li>
+              <li><a href="mailto:info@adler.com.py"><span>E-Mail</span>info@adler.com.py</a></li>
+            </ul>
+            <div class="aside-block">
               <h4 data-i18n="contact.hours.title">Öffnungszeiten</h4>
-              <ul>
+              <ul class="hours-list">
                 <li><span data-i18n="contact.hours.d1">Montag – Freitag</span><span data-i18n="contact.hours.h1">08:00 – 17:00 Uhr</span></li>
                 <li><span data-i18n="contact.hours.d2">Samstag</span><span data-i18n="contact.hours.h2">nach Vereinbarung</span></li>
                 <li><span data-i18n="contact.hours.d3">Sonntag</span><span data-i18n="contact.hours.h3">geschlossen</span></li>
               </ul>
               <p class="hours-note" data-i18n="contact.hours.note">Platzhalter — Öffnungszeiten bitte bestätigen.</p>
             </div>
+          </aside>
+        </div>
 
-            <div class="map-wrap">
-              <iframe title="ADLER Real Estate — Caacupé, Paraguay" src="https://www.google.com/maps?q=-25.3870371,-57.1447589&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <a class="btn btn-gold btn-block" href="https://www.google.com/maps/dir/?api=1&destination=-25.3870371,-57.1447589" target="_blank" rel="noopener" data-i18n="contact.route">Route starten →</a>
-          </div>
+        <div class="contact-map reveal">
+          <iframe title="ADLER Real Estate — Caacupé, Paraguay" src="https://www.google.com/maps?q=-25.3870371,-57.1447589&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="btn btn-gold map-route" href="https://www.google.com/maps/dir/?api=1&destination=-25.3870371,-57.1447589" target="_blank" rel="noopener" data-i18n="contact.route">Route starten →</a>
         </div>
       </div>
     </section>
@@ -264,12 +318,14 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <img src="assets/img/logo-white.png" alt="ADLER Real Estate" class="footer-logo" />
-        <p class="footer-addr">Ruta 2 Mcal. Estigarribia · Casilla 42 · Caacupé · Paraguay</p>
+        <p class="footer-addr">Ruta 2 Mcal. Estigarribia c/ Capitán Caballero · 3000 Caacupé · Paraguay</p>
       </div>
       <nav class="footer-nav">
+        <a href="#kaufen" data-i18n="nav.guide">Ratgeber</a>
         <a href="#angebot" data-i18n="nav.offer">Angebot</a>
         <a href="#objekte" data-i18n="nav.listings">Objekte</a>
         <a href="#ueber" data-i18n="nav.about">Über uns</a>
+        <a href="#projekt" data-i18n="nav.project">Projekt</a>
         <a href="#newsletter" data-i18n="nav.news">Newsletter</a>
         <a href="#" data-i18n="footer.imprint">Impressum</a>
         <a href="#" data-i18n="footer.privacy">Datenschutz</a>
