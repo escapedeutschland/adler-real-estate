@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADLER Real Estate — Immobilien in Paraguay, ehrlich begleitet</title>
+  <meta name="description" content="Immobilien in Paraguay mit über 20 Jahren Erfahrung vor Ort. Ehrliche Begleitung beim Kauf — Ablauf, Kosten und Sicherheit transparent erklärt. Deutsch · Español · English." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Prototype banner -->
+  <div class="proto-bar" id="protoBar">
+    <span data-i18n="proto">Vorschau-Entwurf · Inhalte &amp; Bilder sind Platzhalter zur Abstimmung</span>
+    <button class="proto-close" aria-label="schließen" onclick="document.getElementById('protoBar').remove()">×</button>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="ADLER Real Estate">
+        <img src="assets/img/logo-white.png" alt="ADLER Real Estate" class="brand-logo brand-logo--light" />
+        <img src="assets/img/logo.png" alt="ADLER Real Estate" class="brand-logo brand-logo--dark" />
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#angebot" data-i18n="nav.offer">Angebot</a>
+        <a href="#objekte" data-i18n="nav.listings">Objekte</a>
+        <a href="#ueber" data-i18n="nav.about">Über uns</a>
+        <a href="#newsletter" data-i18n="nav.news">Newsletter</a>
+        <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang" id="lang">
+          <button class="lang-btn" data-lang="de" aria-pressed="true">DE</button>
+          <button class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
+          <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a href="https://wa.me/595981152015" class="btn btn-gold btn-sm" target="_blank" rel="noopener" data-i18n="cta.talk">Erstgespräch</a>
+        <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('assets/img/hero.jpg')"></div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content reveal">
+        <p class="eyebrow light" data-i18n="hero.eyebrow">Caacupé · Paraguay · seit über 20 Jahren</p>
+        <h1 data-i18n="hero.title">Ihr vertrauenswürdiger Partner für exklusive Immobilien in Paraguay</h1>
+        <p class="hero-lead" data-i18n="hero.lead">Gelegen in einer der idyllischsten Regionen des Landes — nur rund 50 Kilometer von der Hauptstadt Asunción und dem Flughafen entfernt.</p>
+        <div class="hero-cta">
+          <a href="https://wa.me/595981152015" class="btn btn-gold" target="_blank" rel="noopener" data-i18n="hero.cta1">Kostenloses Erstgespräch</a>
+          <a href="#objekte" class="btn btn-ghost" data-i18n="hero.cta2">Objekte ansehen →</a>
+        </div>
+      </div>
+      <a href="#trust" class="scroll-hint" aria-hidden="true"></a>
+    </section>
+
+    <!-- Trust bar -->
+    <section class="trust" id="trust">
+      <div class="container trust-grid">
+        <div class="trust-item reveal"><span class="trust-num">20+</span><span class="trust-lbl" data-i18n="trust.years">Jahre vor Ort in Paraguay</span></div>
+        <div class="trust-item reveal"><span class="trust-num">3</span><span class="trust-lbl" data-i18n="trust.lang">Sprachen: DE · ES · EN</span></div>
+        <div class="trust-item reveal"><span class="trust-num">100%</span><span class="trust-lbl" data-i18n="trust.local">Persönlich &amp; vor Ort</span></div>
+        <div class="trust-item reveal"><span class="trust-num">0€</span><span class="trust-lbl" data-i18n="trust.first">Unverbindliches Erstgespräch</span></div>
+      </div>
+    </section>
+
+    <!-- Unser Service / Angebot -->
+    <section class="section" id="angebot">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-i18n="offer.eyebrow">Unser Service</p>
+          <h2 data-i18n="offer.title">Exklusive Immobilien im Herzen Paraguays</h2>
+          <p class="section-intro" data-i18n="offer.intro">ADLER Real Estate ist Ihr vertrauenswürdiger Partner für exklusive Immobilien in Caacupé, Altos, Atyrá, Tobatí, Ypacaraí, Piribebuy, San Bernardino, Asunción und vielen weiteren Städten und Gemeinden im Herzen Paraguays.</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal">
+            <span class="step-ico" aria-hidden="true">⌂</span>
+            <h3 data-i18n="offer.o1.t">Häuser &amp; Villen</h3>
+            <p data-i18n="offer.o1.d">Eine sorgfältig ausgewählte Auswahl an hochwertigen Häusern und Villen im Herzen Südamerikas.</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-ico" aria-hidden="true">◳</span>
+            <h3 data-i18n="offer.o2.t">Gewerbe &amp; Kapitalanlagen</h3>
+            <p data-i18n="offer.o2.d">Ein vielfältiges Angebot an interessanten Geschäfts- und Kapitalanlageimmobilien.</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-ico" aria-hidden="true">▱</span>
+            <h3 data-i18n="offer.o3.t">Grundstücke</h3>
+            <p data-i18n="offer.o3.d">Eine breite Palette an Grundstücken in den schönsten Lagen der Region.</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-ico" aria-hidden="true">✦</span>
+            <h3 data-i18n="offer.o4.t">Persönliche Betreuung</h3>
+            <p data-i18n="offer.o4.d">Über 20 Jahre Erfahrung vor Ort. Wir sprechen fließend Deutsch, Englisch und Spanisch.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objekte (Einblick statt Katalog / Säule 2) -->
+    <section class="section section-alt" id="objekte">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-i18n="list.eyebrow">Einblick statt Katalog</p>
+          <h2 data-i18n="list.title">Ausgewählte Objekte</h2>
+          <p class="section-intro" data-i18n="list.intro">Ein kuratierter Einblick in aktuelle Liegenschaften. Das vollständige Angebot — auch diskrete Off-Market-Objekte — besprechen wir gern persönlich.</p>
+        </div>
+
+        <div class="listings">
+          <article class="card reveal">
+            <div class="card-img"><img src="assets/img/listing-estate.jpg" alt="Schweizer Haus, Nueva Colombia" loading="lazy" data-lightbox /><span class="card-tag" data-i18n="list.tag.estate">Anwesen</span></div>
+            <div class="card-body">
+              <p class="card-loc" data-i18n="list.l1.loc">Nueva Colombia</p>
+              <h3 data-i18n="list.l1.t">Das Schweizer Haus</h3>
+              <p class="card-desc" data-i18n="list.l1.d">Parkähnliches Grundstück von rund 27.500 m² mit zwei Häusern, großzügigen Wohnflächen und liebevoll gestalteten Außenbereichen.</p>
+              <div class="card-meta"><span>27.500 m²</span><span data-i18n="list.l1.m">2 Häuser</span></div>
+              <div class="card-foot"><span class="price">€ 590.000</span><a href="https://wa.me/595981152015" target="_blank" rel="noopener" class="card-link" data-i18n="list.inquire">Anfragen →</a></div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-img"><img src="assets/img/listing-interior.jpg" alt="Casa Bonita, Valle Ballena" loading="lazy" data-lightbox /><span class="card-tag" data-i18n="list.tag.house">Wohnhaus</span></div>
+            <div class="card-body">
+              <p class="card-loc" data-i18n="list.l2.loc">Valle Ballena · Atyrá</p>
+              <h3 data-i18n="list.l2.t">Casa Bonita</h3>
+              <p class="card-desc" data-i18n="list.l2.d">Maßgefertigte Premiumküche, Kamin, hohe Decken und große überdachte Terrasse. Inklusive Sicherheitstechnik und wartungsfreundlicher Klimalösung.</p>
+              <div class="card-meta"><span>3.650 m²</span><span data-i18n="list.l2.m">2 Schlafzimmer</span></div>
+              <div class="card-foot"><span class="price">$ 324.000</span><a href="https://wa.me/595981152015" target="_blank" rel="noopener" class="card-link" data-i18n="list.inquire">Anfragen →</a></div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-img"><img src="assets/img/listing-pool.jpg" alt="Modernes Haus mit Pool, Caacupé" loading="lazy" data-lightbox /><span class="card-tag" data-i18n="list.tag.pool">Mit Pool</span></div>
+            <div class="card-body">
+              <p class="card-loc" data-i18n="list.l3.loc">Caacupé</p>
+              <h3 data-i18n="list.l3.t">Haus mit Pool &amp; Rooftop</h3>
+              <p class="card-desc" data-i18n="list.l3.d">Zwei separate Apartments plus Rooftop-Level, sechs Schlafzimmer. Highlight ist der Poolbereich mit flachem Kinderbereich.</p>
+              <div class="card-meta"><span>662 m²</span><span data-i18n="list.l3.m">6 Schlafzimmer</span></div>
+              <div class="card-foot"><span class="price">$ 585.000</span><a href="https://wa.me/595981152015" target="_blank" rel="noopener" class="card-link" data-i18n="list.inquire">Anfragen →</a></div>
+            </div>
+          </article>
+        </div>
+
+        <p class="listings-more reveal" data-i18n="list.more">Weitere Objekte von € 45.000 bis € 2,5 Mio. — sprechen Sie uns an.</p>
+      </div>
+    </section>
+
+    <!-- Über uns (Säule 3) -->
+    <section class="section" id="ueber">
+      <div class="container about-grid">
+        <div class="about-text reveal">
+          <p class="eyebrow" data-i18n="about.eyebrow">Über uns</p>
+          <h2 data-i18n="about.title">Über ADLER Real Estate</h2>
+          <p data-i18n="about.p1">Unser engagiertes Team bietet Ihnen eine sorgfältig ausgewählte Auswahl an hochwertigen Häusern und Villen im Herzen Südamerikas, ergänzt durch ein vielfältiges Angebot an interessanten Geschäfts- und Kapitalanlageimmobilien sowie eine breite Palette an Grundstücken.</p>
+          <p data-i18n="about.p2">Mit über 20 Jahren Erfahrung vor Ort in Paraguay stehen wir Ihnen mit umfassender Kompetenz zur Verfügung. Wir sprechen fließend auf Deutsch, Englisch und Spanisch.</p>
+          <p data-i18n="about.p3">Geführt von <strong>Miryan Galeano</strong> und <strong>Sebastian Geisen</strong>.</p>
+          <ul class="ticks">
+            <li data-i18n="about.t1">Deutsch, Englisch und Spanisch — fließend</li>
+            <li data-i18n="about.t2">Über 20 Jahre Erfahrung vor Ort</li>
+            <li data-i18n="about.t3">Exklusive Häuser, Villen, Gewerbe &amp; Grundstücke</li>
+          </ul>
+        </div>
+        <div class="about-card reveal">
+          <div class="quote-mark">”</div>
+          <p class="quote" data-i18n="about.quote">Ihr vertrauenswürdiger Partner für exklusive Immobilien im Herzen Paraguays.</p>
+          <p class="quote-by" data-i18n="about.by">— ADLER Real Estate</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter / Rundschreiben -->
+    <section class="section project" id="newsletter">
+      <div class="project-bg" style="background-image:url('assets/img/band-aerial.jpg')"></div>
+      <div class="project-overlay"></div>
+      <div class="container project-inner">
+        <div class="project-text reveal">
+          <p class="eyebrow light" data-i18n="news.eyebrow">Newsletter</p>
+          <h2 data-i18n="news.title">Immer die neuesten Angebote zuerst</h2>
+          <p data-i18n="news.p1">Wir informieren Sie per E-Mail über die Immobilien-Angebote in Paraguay!</p>
+          <p data-i18n="news.p2">Melden Sie sich jetzt in nur wenigen Augenblicken kostenlos und unverbindlich zu unserem Rundschreiben an.</p>
+        </div>
+
+        <form class="signup reveal" id="signup" novalidate>
+          <h3 data-i18n="news.form.title">Zum Rundschreiben anmelden</h3>
+          <p class="signup-sub" data-i18n="news.form.sub">Kostenlos, unverbindlich und jederzeit abbestellbar.</p>
+          <div class="field"><input type="text" name="name" required data-i18n-ph="news.form.name" placeholder="Name" /></div>
+          <div class="field"><input type="email" name="email" required data-i18n-ph="news.form.email" placeholder="E-Mail" /></div>
+          <label class="consent"><input type="checkbox" name="consent" required /> <span data-i18n="news.form.consent">Ich möchte das Rundschreiben erhalten und stimme der Datenschutzerklärung zu.</span></label>
+          <button type="submit" class="btn btn-gold btn-block" data-i18n="news.form.submit">Anmelden</button>
+          <p class="form-note" data-i18n="news.form.note">Demo-Formular — im Live-Betrieb mit Double-Opt-In (z. B. Brevo) angebunden.</p>
+          <p class="form-success" id="formSuccess" hidden data-i18n="news.form.success">Danke! Im Live-Betrieb erhalten Sie jetzt eine Bestätigungs-E-Mail.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section class="section section-alt" id="kontakt">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-i18n="contact.eyebrow">Erreichbarkeit</p>
+          <h2 data-i18n="contact.title">Sprechen wir — unverbindlich</h2>
+          <p class="section-intro" data-i18n="contact.intro">Am schnellsten per WhatsApp. Auf Deutsch, Spanisch oder Englisch.</p>
+        </div>
+        <div class="contact-layout">
+          <!-- Kontaktformular -->
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <h3 data-i18n="contact.form.title">Nachricht senden</h3>
+            <div class="field"><input type="text" name="name" required data-i18n-ph="contact.form.name" placeholder="Name" /></div>
+            <div class="field-row">
+              <div class="field"><input type="email" name="email" required data-i18n-ph="contact.form.email" placeholder="E-Mail" /></div>
+              <div class="field"><input type="tel" name="phone" data-i18n-ph="contact.form.phone" placeholder="Telefon (optional)" /></div>
+            </div>
+            <div class="field"><textarea name="message" rows="4" required data-i18n-ph="contact.form.msg" placeholder="Ihre Nachricht"></textarea></div>
+            <label class="consent"><input type="checkbox" name="consent" required /> <span data-i18n="contact.form.consent">Ich stimme der Datenschutzerklärung zu.</span></label>
+            <button type="submit" class="btn btn-gold btn-block" data-i18n="contact.form.submit">Nachricht senden</button>
+            <p class="form-note" data-i18n="contact.form.note">Demo-Formular — im Live-Betrieb an einen Dienst (z. B. Brevo / Formspree) angebunden.</p>
+            <p class="form-success" id="contactSuccess" hidden data-i18n="contact.form.success">Danke! Im Live-Betrieb wird Ihre Nachricht jetzt versendet.</p>
+          </form>
+
+          <!-- Infos, Karte & Route -->
+          <div class="contact-info reveal">
+            <div class="info-block">
+              <h3 data-i18n="contact.info.title">Besuchen Sie uns</h3>
+              <p class="info-addr">Ruta 2 Mcal. Estigarribia<br/>Casilla de Correo 42<br/>Caacupé · Paraguay</p>
+              <ul class="info-links">
+                <li><a href="https://wa.me/595981152015" target="_blank" rel="noopener"><span>WhatsApp · Miryan</span>+595 981 15 20 15</a></li>
+                <li><a href="https://wa.me/595981897989" target="_blank" rel="noopener"><span>WhatsApp · Sebastian</span>+595 981 89 79 89</a></li>
+                <li><a href="mailto:info@adler.com.py"><span>E-Mail</span>info@adler.com.py</a></li>
+              </ul>
+            </div>
+
+            <div class="hours">
+              <h4 data-i18n="contact.hours.title">Öffnungszeiten</h4>
+              <ul>
+                <li><span data-i18n="contact.hours.d1">Montag – Freitag</span><span data-i18n="contact.hours.h1">08:00 – 17:00 Uhr</span></li>
+                <li><span data-i18n="contact.hours.d2">Samstag</span><span data-i18n="contact.hours.h2">nach Vereinbarung</span></li>
+                <li><span data-i18n="contact.hours.d3">Sonntag</span><span data-i18n="contact.hours.h3">geschlossen</span></li>
+              </ul>
+              <p class="hours-note" data-i18n="contact.hours.note">Platzhalter — Öffnungszeiten bitte bestätigen.</p>
+            </div>
+
+            <div class="map-wrap">
+              <iframe title="ADLER Real Estate — Caacupé, Paraguay" src="https://www.google.com/maps?q=-25.3870371,-57.1447589&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <a class="btn btn-gold btn-block" href="https://www.google.com/maps/dir/?api=1&destination=-25.3870371,-57.1447589" target="_blank" rel="noopener" data-i18n="contact.route">Route starten →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo-white.png" alt="ADLER Real Estate" class="footer-logo" />
+        <p class="footer-addr">Ruta 2 Mcal. Estigarribia · Casilla 42 · Caacupé · Paraguay</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#angebot" data-i18n="nav.offer">Angebot</a>
+        <a href="#objekte" data-i18n="nav.listings">Objekte</a>
+        <a href="#ueber" data-i18n="nav.about">Über uns</a>
+        <a href="#newsletter" data-i18n="nav.news">Newsletter</a>
+        <a href="#" data-i18n="footer.imprint">Impressum</a>
+        <a href="#" data-i18n="footer.privacy">Datenschutz</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> ADLER Real Estate</span>
+      <span class="footer-proto" data-i18n="footer.proto">Vorschau-Entwurf · noch nicht live</span>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden><button class="lb-close" aria-label="schließen">×</button><img id="lbImg" src="" alt="" /></div>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/595981152015" class="fab-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3 0-1.5.7-2.2 1-2.5.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.4.5-.3.3c-.2.2-.3.4-.2.7.2.5.9 1.6 1.9 2.4 1.2 1.1 2.2 1.4 2.5 1.5.2.1.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.4.1.2.1.9-.1 1.5z"/></svg>
+  </a>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

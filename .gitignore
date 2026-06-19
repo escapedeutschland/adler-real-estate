@@ -1,0 +1,8 @@
+# source crops / scratch (not needed for the site)
+assets/img/raw/
+home.html
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.log
