@@ -328,13 +328,16 @@ h3{font-size:1.35rem}
 .lightbox .lb-prev{left:2vw}.lightbox .lb-next{right:2vw}
 .lightbox .lb-count{position:fixed;bottom:2vh;left:50%;transform:translateX(-50%)}
 
-/* ===== Nature accents (stock) ===== */
-.leafband{height:clamp(120px,15vh,180px);background-size:cover;background-position:center;position:relative}
-.leafband::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,58,83,.20),rgba(15,58,83,.04) 45%,rgba(15,58,83,.04) 55%,rgba(15,58,83,.20))}
+/* ===== Nature accents (stock) — subtle texture on dark panels ===== */
+.trust{position:relative;overflow:hidden}
+.trust::before{content:"";position:absolute;inset:0;background:url('../img/stock/palm-dark.jpg') center/cover;opacity:.12;pointer-events:none}
+.trust-grid{position:relative;z-index:1}
+.about-card{position:relative;overflow:hidden}
+.about-card::before{content:"";position:absolute;inset:0;background:url('../img/stock/fronds.jpg') center/cover;opacity:.13;pointer-events:none}
+.about-card>*{position:relative;z-index:1}
 .site-footer{position:relative}
-.footer-leaf{height:150px;background-size:cover;background-position:center 40%;position:relative}
-.footer-leaf::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,44,64,.35),rgba(11,44,64,1))}
+.footer-leaf{height:120px;background-size:cover;background-position:center 40%;position:relative;opacity:.9}
+.footer-leaf::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,44,64,.45),rgba(11,44,64,1))}
 @media (max-width:720px){
-  .leafband{height:100px}
-  .footer-leaf{height:110px}
+  .footer-leaf{height:90px}
 }
