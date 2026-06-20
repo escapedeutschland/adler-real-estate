@@ -6,3 +6,11 @@ home.html
 .DS_Store
 Thumbs.db
 *.log
+
+# scrape scratch
+scrape/
+*.xml
+urls.txt
+obj_urls.txt
+cat_urls.txt
+obj.html
