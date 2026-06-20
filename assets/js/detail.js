@@ -4,13 +4,13 @@
 
   var T = {
     de: { toCatalog:"← Katalog", req:"Auf Anfrage", inquire:"Jetzt anfragen", wa:"Hallo, ich interessiere mich für: ",
-      type:"Typ", location:"Ort", size:"Fläche", beds:"Schlafzimmer", priceUsd:"ca. in USD",
+      type:"Typ", location:"Ort", size:"Fläche", beds:"Schlafzimmer", baths:"Badezimmer", year:"Baujahr", priceUsd:"ca. in USD",
       orig:"Original-Inserat ansehen ↗", notfound:"Objekt nicht gefunden.", back:"Zum Katalog", desc:"Beschreibung", photos:"Fotos" },
     es: { toCatalog:"← Catálogo", req:"A consultar", inquire:"Consultar ahora", wa:"Hola, me interesa: ",
-      type:"Tipo", location:"Lugar", size:"Superficie", beds:"Dormitorios", priceUsd:"aprox. en USD",
+      type:"Tipo", location:"Lugar", size:"Superficie", beds:"Dormitorios", baths:"Baños", year:"Año de construcción", priceUsd:"aprox. en USD",
       orig:"Ver anuncio original ↗", notfound:"Inmueble no encontrado.", back:"Al catálogo", desc:"Descripción", photos:"Fotos" },
     en: { toCatalog:"← Catalogue", req:"On request", inquire:"Inquire now", wa:"Hello, I'm interested in: ",
-      type:"Type", location:"Location", size:"Area", beds:"Bedrooms", priceUsd:"approx. in USD",
+      type:"Type", location:"Location", size:"Area", beds:"Bedrooms", baths:"Bathrooms", year:"Year built", priceUsd:"approx. in USD",
       orig:"View original listing ↗", notfound:"Property not found.", back:"To the catalogue", desc:"Description", photos:"Photos" }
   };
   var TYPE = {
@@ -61,6 +61,8 @@
     if (it.location) facts.push("<li><span>" + t.location + "</span><span>" + esc(it.location) + "</span></li>");
     if (it.size) facts.push("<li><span>" + t.size + "</span><span>" + esc(it.size) + "</span></li>");
     if (it.beds) facts.push("<li><span>" + t.beds + "</span><span>" + esc(it.beds) + "</span></li>");
+    if (it.baths) facts.push("<li><span>" + t.baths + "</span><span>" + esc(it.baths) + "</span></li>");
+    if (it.year) facts.push("<li><span>" + t.year + "</span><span>" + esc(it.year) + "</span></li>");
     if (imgs.length) facts.push("<li><span>" + t.photos + "</span><span>" + imgs.length + "</span></li>");
 
     var waMsg = encodeURIComponent(t.wa + it.title + " (" + location.href + ")");
@@ -90,7 +92,7 @@
           (it.url ? '<p class="detail-orig"><a href="' + it.url + '" target="_blank" rel="noopener" style="color:var(--gold-deep);text-decoration:underline">' + t.orig + "</a></p>" : "") +
         "</div></aside>" +
       "</div>" +
-      (it.desc ? '<div class="detail-desc"><h2>' + t.desc + "</h2><p>" + esc(it.desc) + "</p></div>" : "");
+      ((it.descFull || it.desc) ? '<div class="detail-desc"><h2>' + t.desc + "</h2><p>" + esc(it.descFull || it.desc) + "</p></div>" : "");
 
     if (!imgs.length) return;
 
