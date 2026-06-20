@@ -327,3 +327,14 @@ h3{font-size:1.35rem}
 .lightbox .gal-nav{position:fixed}
 .lightbox .lb-prev{left:2vw}.lightbox .lb-next{right:2vw}
 .lightbox .lb-count{position:fixed;bottom:2vh;left:50%;transform:translateX(-50%)}
+
+/* ===== Nature accents (stock) ===== */
+.leafband{height:clamp(120px,15vh,180px);background-size:cover;background-position:center;position:relative}
+.leafband::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,58,83,.20),rgba(15,58,83,.04) 45%,rgba(15,58,83,.04) 55%,rgba(15,58,83,.20))}
+.site-footer{position:relative}
+.footer-leaf{height:150px;background-size:cover;background-position:center 40%;position:relative}
+.footer-leaf::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,44,64,.35),rgba(11,44,64,1))}
+@media (max-width:720px){
+  .leafband{height:100px}
+  .footer-leaf{height:110px}
+}
