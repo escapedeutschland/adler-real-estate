@@ -1,17 +1,17 @@
-/* ADLER Real Estate — single object page */
+/* ADLER Real Estate — single object page with gallery */
 (function () {
   "use strict";
 
   var T = {
     de: { toCatalog:"← Katalog", req:"Auf Anfrage", inquire:"Jetzt anfragen", wa:"Hallo, ich interessiere mich für: ",
       type:"Typ", location:"Ort", size:"Fläche", beds:"Schlafzimmer", priceUsd:"ca. in USD",
-      orig:"Alle Fotos im Original-Inserat ansehen ↗", notfound:"Objekt nicht gefunden.", back:"Zum Katalog", desc:"Beschreibung" },
+      orig:"Original-Inserat ansehen ↗", notfound:"Objekt nicht gefunden.", back:"Zum Katalog", desc:"Beschreibung", photos:"Fotos" },
     es: { toCatalog:"← Catálogo", req:"A consultar", inquire:"Consultar ahora", wa:"Hola, me interesa: ",
       type:"Tipo", location:"Lugar", size:"Superficie", beds:"Dormitorios", priceUsd:"aprox. en USD",
-      orig:"Ver todas las fotos en el anuncio original ↗", notfound:"Inmueble no encontrado.", back:"Al catálogo", desc:"Descripción" },
+      orig:"Ver anuncio original ↗", notfound:"Inmueble no encontrado.", back:"Al catálogo", desc:"Descripción", photos:"Fotos" },
     en: { toCatalog:"← Catalogue", req:"On request", inquire:"Inquire now", wa:"Hello, I'm interested in: ",
       type:"Type", location:"Location", size:"Area", beds:"Bedrooms", priceUsd:"approx. in USD",
-      orig:"See all photos in the original listing ↗", notfound:"Property not found.", back:"To the catalogue", desc:"Description" }
+      orig:"View original listing ↗", notfound:"Property not found.", back:"To the catalogue", desc:"Description", photos:"Photos" }
   };
   var TYPE = {
     de:{}, es:{"Villa & Haus":"Casa y villa","Grundstück":"Terreno","Gewerbe":"Comercial","Miete":"Alquiler","Nachbarschaft":"Barrio","Immobilie":"Inmueble"},
@@ -38,7 +38,8 @@
   var yr = document.getElementById("year"); if (yr) yr.textContent = new Date().getFullYear();
 
   function fmt(n) { return n.toLocaleString("de-DE"); }
-  function esc(s) { return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function esc(s) { return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function thumb(u) { return u.replace(/dimension=[^:/]+/, "dimension=240x180"); }
 
   var root = document.getElementById("detailRoot");
   var id = new URLSearchParams(location.search).get("id");
@@ -48,23 +49,38 @@
     if (!it) { root.innerHTML = '<p class="cat-empty">' + t.notfound + ' <a href="katalog.html" style="color:var(--gold-deep)">' + t.back + "</a></p>"; return; }
     document.title = it.title + " — ADLER Real Estate";
 
+    var imgs = (it.images && it.images.length) ? it.images : (it.image ? [it.image] : []);
+    var multi = imgs.length > 1;
+
     var price = it.priceEUR ? '<span class="price">€ ' + fmt(it.priceEUR) + "</span>" :
                 (it.priceUSD ? '<span class="price">$ ' + fmt(it.priceUSD) + "</span>" :
                 '<span class="price" style="font-size:1.4rem;color:var(--gold-deep)">' + t.req + "</span>");
     var priceSub = (it.priceEUR && it.priceUSD) ? '<span class="price-sub">' + t.priceUsd + " $ " + fmt(it.priceUSD) + "</span>" : "";
 
-    var facts = [];
-    facts.push("<li><span>" + t.type + "</span><span>" + typeLabel(it.type) + "</span></li>");
+    var facts = ["<li><span>" + t.type + "</span><span>" + typeLabel(it.type) + "</span></li>"];
     if (it.location) facts.push("<li><span>" + t.location + "</span><span>" + esc(it.location) + "</span></li>");
     if (it.size) facts.push("<li><span>" + t.size + "</span><span>" + esc(it.size) + "</span></li>");
     if (it.beds) facts.push("<li><span>" + t.beds + "</span><span>" + esc(it.beds) + "</span></li>");
+    if (imgs.length) facts.push("<li><span>" + t.photos + "</span><span>" + imgs.length + "</span></li>");
 
     var waMsg = encodeURIComponent(t.wa + it.title + " (" + location.href + ")");
 
+    var galleryHTML =
+      '<div class="gallery">' +
+        '<div class="gal-stage">' +
+          (multi ? '<button class="gal-nav gal-prev" aria-label="prev">‹</button>' : "") +
+          '<img id="galMain" src="' + (imgs[0] || "") + '" alt="' + esc(it.title) + '" />' +
+          (multi ? '<button class="gal-nav gal-next" aria-label="next">›</button>' : "") +
+          (multi ? '<span class="gal-count" id="galCount">1 / ' + imgs.length + "</span>" : "") +
+        "</div>" +
+        (multi ? '<div class="gal-thumbs" id="galThumbs">' + imgs.map(function (u, i) {
+          return '<button class="gal-thumb' + (i === 0 ? " active" : "") + '" data-i="' + i + '"><img src="' + thumb(u) + '" loading="lazy" alt="" /></button>';
+        }).join("") + "</div>" : "") +
+      "</div>";
+
     root.innerHTML =
       '<a href="katalog.html" class="detail-back">' + t.toCatalog + "</a>" +
-      '<div class="detail-hero">' +
-        '<div class="detail-img"><img src="' + (it.image || it.thumb || "") + '" alt="' + esc(it.title) + '" /></div>' +
+      '<div class="detail-hero">' + galleryHTML +
         '<aside class="detail-side"><div class="detail-card">' +
           '<p class="card-loc">' + esc(it.location || "Paraguay") + "</p>" +
           "<h1 style=\"font-size:1.7rem;margin:.2rem 0 .6rem\">" + esc(it.title) + "</h1>" +
@@ -75,6 +91,54 @@
         "</div></aside>" +
       "</div>" +
       (it.desc ? '<div class="detail-desc"><h2>' + t.desc + "</h2><p>" + esc(it.desc) + "</p></div>" : "");
+
+    if (!imgs.length) return;
+
+    /* ---- gallery interactions ---- */
+    var cur = 0;
+    var main = document.getElementById("galMain");
+    var countEl = document.getElementById("galCount");
+
+    // lightbox
+    var lb = document.createElement("div");
+    lb.className = "lightbox"; lb.hidden = true;
+    lb.innerHTML = '<button class="lb-close" aria-label="close">×</button>' +
+      (multi ? '<button class="gal-nav lb-prev" aria-label="prev">‹</button>' : "") +
+      '<img id="lbImg" src="" alt="" />' +
+      (multi ? '<button class="gal-nav lb-next" aria-label="next">›</button>' : "") +
+      (multi ? '<span class="gal-count lb-count"></span>' : "");
+    document.body.appendChild(lb);
+    var lbImg = lb.querySelector("#lbImg"), lbCount = lb.querySelector(".lb-count");
+
+    function show(i) {
+      cur = (i + imgs.length) % imgs.length;
+      main.src = imgs[cur];
+      if (countEl) countEl.textContent = (cur + 1) + " / " + imgs.length;
+      document.querySelectorAll(".gal-thumb").forEach(function (b) { b.classList.toggle("active", +b.dataset.i === cur); });
+      var act = document.querySelector(".gal-thumb.active"); if (act) act.scrollIntoView({ block: "nearest", inline: "center" });
+      if (!lb.hidden) { lbImg.src = imgs[cur]; if (lbCount) lbCount.textContent = (cur + 1) + " / " + imgs.length; }
+    }
+    function openLb() { lbImg.src = imgs[cur]; if (lbCount) lbCount.textContent = (cur + 1) + " / " + imgs.length; lb.hidden = false; document.body.style.overflow = "hidden"; }
+    function closeLb() { lb.hidden = true; document.body.style.overflow = ""; }
+
+    main.addEventListener("click", openLb);
+    var p = document.querySelector(".gal-prev"), n = document.querySelector(".gal-next");
+    if (p) p.addEventListener("click", function () { show(cur - 1); });
+    if (n) n.addEventListener("click", function () { show(cur + 1); });
+    document.querySelectorAll(".gal-thumb").forEach(function (b) {
+      b.addEventListener("click", function () { show(+b.dataset.i); });
+    });
+    lb.addEventListener("click", function (e) {
+      if (e.target === lb || e.target.classList.contains("lb-close")) closeLb();
+      else if (e.target.classList.contains("lb-prev")) show(cur - 1);
+      else if (e.target.classList.contains("lb-next")) show(cur + 1);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (lb.hidden) return;
+      if (e.key === "Escape") closeLb();
+      else if (e.key === "ArrowLeft") show(cur - 1);
+      else if (e.key === "ArrowRight") show(cur + 1);
+    });
   }).catch(function () {
     root.innerHTML = '<p class="cat-empty">' + t.notfound + "</p>";
   });
