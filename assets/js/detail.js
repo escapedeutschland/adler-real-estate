@@ -41,6 +41,37 @@
   function esc(s) { return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function thumb(u) { return u.replace(/dimension=[^:/]+/, "dimension=240x180"); }
 
+  function formatDesc(text) {
+    var lines = text.split("\n").map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
+    // drop standalone price lines (redundant with the price card)
+    lines = lines.filter(function (l) {
+      return !(l.length <= 60 && /[\d.,]{3,}\s*(euro|eur|€|usd|us-dollar|gs|guaran)/i.test(l) && /(preis|verkauf|kaufpreis)/i.test(l));
+    });
+    // merge wrapped sentence fragments (prev has no terminal punctuation & next starts lowercase)
+    var merged = [];
+    lines.forEach(function (l) {
+      if (merged.length) {
+        var p = merged[merged.length - 1];
+        if (!/[.!?:)]$/.test(p) && /^[a-zäöüß(„"]/.test(l)) { merged[merged.length - 1] = p + " " + l; return; }
+      }
+      merged.push(l);
+    });
+    lines = merged;
+
+    var out = "", listOpen = false;
+    function closeList() { if (listOpen) { out += "</ul>"; listOpen = false; } }
+    for (var i = 0; i < lines.length; i++) {
+      var l = lines[i], next = lines[i + 1] || "";
+      var heading = (l.length <= 78 && !/[.!?]$/.test(l) && l.split(" ").length <= 9 && next.length > 110) || (/:$/.test(l) && l.length <= 80);
+      if (heading) { closeList(); out += "<h4>" + esc(l.replace(/:$/, "")) + "</h4>"; continue; }
+      var bullet = l.length <= 118 && !/[.!?]$/.test(l);
+      if (bullet) { if (!listOpen) { out += '<ul class="desc-list">'; listOpen = true; } out += "<li>" + esc(l) + "</li>"; continue; }
+      closeList(); out += "<p>" + esc(l) + "</p>";
+    }
+    closeList();
+    return out;
+  }
+
   var root = document.getElementById("detailRoot");
   var id = new URLSearchParams(location.search).get("id");
 
@@ -92,7 +123,7 @@
           (it.url ? '<p class="detail-orig"><a href="' + it.url + '" target="_blank" rel="noopener" style="color:var(--gold-deep);text-decoration:underline">' + t.orig + "</a></p>" : "") +
         "</div></aside>" +
       "</div>" +
-      ((it.descFull || it.desc) ? '<div class="detail-desc"><h2>' + t.desc + "</h2><p>" + esc(it.descFull || it.desc) + "</p></div>" : "");
+      ((it.descFull || it.desc) ? '<div class="detail-desc"><h2>' + t.desc + "</h2>" + (it.descFull ? formatDesc(it.descFull) : "<p>" + esc(it.desc) + "</p>") + "</div>" : "");
 
     if (!imgs.length) return;
 
