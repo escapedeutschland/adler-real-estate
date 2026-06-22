@@ -156,7 +156,7 @@
     fType.value = ""; fLoc.value = ""; fPrice.value = ""; fSort.value = "default"; page = 1; render();
   });
 
-  fetch("assets/data/listings.json?v=12")
+  fetch("assets/data/listings.json?v=13")
     .then(function (r) { return r.json(); })
     .then(function (data) { all = data || []; buildFilters(); render(); })
     .catch(function () { grid.innerHTML = ""; emptyEl.hidden = false; });

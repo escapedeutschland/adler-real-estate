@@ -40,6 +40,7 @@
   function fmt(n) { return n.toLocaleString("de-DE"); }
   function esc(s) { return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function thumb(u) { return u.replace(/dimension=[^:/]+/, "dimension=240x180"); }
+  function stripUnit(v, units) { var s = String(v == null ? "" : v); var r = s.replace(new RegExp("\\s*(?:" + units + ")\\.?\\s*$", "i"), "").trim(); return r || s; }
 
   function formatDesc(text) {
     var lines = text.split("\n").map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
@@ -75,7 +76,7 @@
   var root = document.getElementById("detailRoot");
   var id = new URLSearchParams(location.search).get("id");
 
-  fetch("assets/data/listings.json?v=12").then(function (r) { return r.json(); }).then(function (data) {
+  fetch("assets/data/listings.json?v=13").then(function (r) { return r.json(); }).then(function (data) {
     var it = (data || []).filter(function (x) { return String(x.id) === String(id); })[0];
     if (!it) { root.innerHTML = '<p class="cat-empty">' + t.notfound + ' <a href="katalog.html" style="color:var(--gold-deep)">' + t.back + "</a></p>"; return; }
     document.title = it.title + " — ADLER Real Estate";
@@ -91,8 +92,8 @@
     var facts = ["<li><span>" + t.type + "</span><span>" + typeLabel(it.type) + "</span></li>"];
     if (it.location) facts.push("<li><span>" + t.location + "</span><span>" + esc(it.location) + "</span></li>");
     if (it.size) facts.push("<li><span>" + t.size + "</span><span>" + esc(it.size) + "</span></li>");
-    if (it.beds) facts.push("<li><span>" + t.beds + "</span><span>" + esc(it.beds) + "</span></li>");
-    if (it.baths) facts.push("<li><span>" + t.baths + "</span><span>" + esc(it.baths) + "</span></li>");
+    if (it.beds) facts.push("<li><span>" + t.beds + "</span><span>" + esc(stripUnit(it.beds, "Schlafzimmern?|Zimmer|dormitorios?|bedrooms?")) + "</span></li>");
+    if (it.baths) facts.push("<li><span>" + t.baths + "</span><span>" + esc(stripUnit(it.baths, "Badezimmern?|Bäder|Bad|baños?|bathrooms?")) + "</span></li>");
     if (it.year) facts.push("<li><span>" + t.year + "</span><span>" + esc(it.year) + "</span></li>");
     if (imgs.length) facts.push("<li><span>" + t.photos + "</span><span>" + imgs.length + "</span></li>");
 
@@ -130,7 +131,7 @@
         '<div class="detail-main">' + galleryHTML + videoHTML + descBlock + "</div>" +
         '<aside class="detail-side"><div class="detail-card">' +
           '<p class="card-loc">' + esc(it.location || "Paraguay") + "</p>" +
-          "<h1 style=\"font-size:1.7rem;margin:.2rem 0 .6rem\">" + esc(it.title) + "</h1>" +
+          '<h1 class="detail-card-title">' + esc(it.title) + "</h1>" +
           price + priceSub +
           '<ul class="detail-facts">' + facts.join("") + "</ul>" +
           '<a class="btn btn-gold btn-block" target="_blank" rel="noopener" href="https://wa.me/595981152015?text=' + waMsg + '">' + t.inquire + "</a>" +
