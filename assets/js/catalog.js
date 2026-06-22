@@ -101,15 +101,16 @@
     var a = document.createElement("a");
     a.className = "card";
     a.href = "objekt.html?id=" + encodeURIComponent(it.id);
+    var ti = it["title_" + lang] || it.title || "";
     var facts = [];
     if (it.size) facts.push("<span>" + it.size + "</span>");
     if (it.beds) facts.push("<span>" + it.beds + "</span>");
     a.innerHTML =
-      '<div class="card-img"><img src="' + (it.thumb || "") + '" alt="' + (it.title || "") + '" loading="lazy" />' +
+      '<div class="card-img"><img src="' + (it.thumb || "") + '" alt="' + ti + '" loading="lazy" />' +
       '<span class="card-tag">' + typeLabel(it.type) + "</span></div>" +
       '<div class="card-body">' +
         '<p class="card-loc">' + (it.location || "Paraguay") + "</p>" +
-        "<h3>" + (it.title || "") + "</h3>" +
+        "<h3>" + ti + "</h3>" +
         (facts.length ? '<div class="card-meta">' + facts.join("") + "</div>" : "") +
         '<div class="card-foot">' + priceHTML(it) + '<span class="card-link">' + t.details + " →</span></div>" +
       "</div>";
@@ -156,7 +157,7 @@
     fType.value = ""; fLoc.value = ""; fPrice.value = ""; fSort.value = "default"; page = 1; render();
   });
 
-  fetch("assets/data/listings.json?v=14")
+  fetch("assets/data/listings.json?v=15")
     .then(function (r) { return r.json(); })
     .then(function (data) {
       all = data || [];

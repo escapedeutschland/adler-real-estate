@@ -76,10 +76,13 @@
   var root = document.getElementById("detailRoot");
   var id = new URLSearchParams(location.search).get("id");
 
-  fetch("assets/data/listings.json?v=14").then(function (r) { return r.json(); }).then(function (data) {
+  fetch("assets/data/listings.json?v=15").then(function (r) { return r.json(); }).then(function (data) {
     var it = (data || []).filter(function (x) { return String(x.id) === String(id); })[0];
     if (!it) { root.innerHTML = '<p class="cat-empty">' + t.notfound + ' <a href="katalog.html" style="color:var(--gold-deep)">' + t.back + "</a></p>"; return; }
-    document.title = it.title + " — ADLER Real Estate";
+    var title = it["title_" + lang] || it.title;
+    var dFull = it["descFull_" + lang] || it.descFull;
+    var dShort = it["desc_" + lang] || it.desc;
+    document.title = title + " — ADLER Real Estate";
 
     var imgs = (it.images && it.images.length) ? it.images : (it.image ? [it.image] : []);
     var multi = imgs.length > 1;
@@ -97,13 +100,13 @@
     if (it.year) facts.push("<li><span>" + t.year + "</span><span>" + esc(it.year) + "</span></li>");
     if (imgs.length) facts.push("<li><span>" + t.photos + "</span><span>" + imgs.length + "</span></li>");
 
-    var waMsg = encodeURIComponent(t.wa + it.title + " (" + location.href + ")");
+    var waMsg = encodeURIComponent(t.wa + title + " (" + location.href + ")");
 
     var galleryHTML =
       '<div class="gallery">' +
         '<div class="gal-stage">' +
           (multi ? '<button class="gal-nav gal-prev" aria-label="prev">‹</button>' : "") +
-          '<img id="galMain" src="' + (imgs[0] || "") + '" alt="' + esc(it.title) + '" />' +
+          '<img id="galMain" src="' + (imgs[0] || "") + '" alt="' + esc(title) + '" />' +
           (multi ? '<button class="gal-nav gal-next" aria-label="next">›</button>' : "") +
           (multi ? '<span class="gal-count" id="galCount">1 / ' + imgs.length + "</span>" : "") +
         "</div>" +
@@ -112,8 +115,8 @@
         }).join("") + "</div>" : "") +
       "</div>";
 
-    var descBlock = (it.descFull || it.desc)
-      ? '<div class="detail-desc"><h2>' + t.desc + "</h2>" + (it.descFull ? formatDesc(it.descFull) : "<p>" + esc(it.desc) + "</p>") + "</div>"
+    var descBlock = (dFull || dShort)
+      ? '<div class="detail-desc"><h2>' + t.desc + "</h2>" + (dFull ? formatDesc(dFull) : "<p>" + esc(dShort) + "</p>") + "</div>"
       : "";
 
     var videoHTML = it.video
@@ -131,7 +134,7 @@
         '<div class="detail-main">' + galleryHTML + videoHTML + descBlock + "</div>" +
         '<aside class="detail-side"><div class="detail-card">' +
           '<p class="card-loc">' + esc(it.location || "Paraguay") + "</p>" +
-          '<h1 class="detail-card-title">' + esc(it.title) + "</h1>" +
+          '<h1 class="detail-card-title">' + esc(title) + "</h1>" +
           price + priceSub +
           '<ul class="detail-facts">' + facts.join("") + "</ul>" +
           '<a class="btn btn-gold btn-block" target="_blank" rel="noopener" href="https://wa.me/595981152015?text=' + waMsg + '">' + t.inquire + "</a>" +
