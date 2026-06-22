@@ -76,7 +76,7 @@
   var root = document.getElementById("detailRoot");
   var id = new URLSearchParams(location.search).get("id");
 
-  fetch("assets/data/listings.json?v=15").then(function (r) { return r.json(); }).then(function (data) {
+  fetch("assets/data/listings.json?v=16").then(function (r) { return r.json(); }).then(function (data) {
     var it = (data || []).filter(function (x) { return String(x.id) === String(id); })[0];
     if (!it) { root.innerHTML = '<p class="cat-empty">' + t.notfound + ' <a href="katalog.html" style="color:var(--gold-deep)">' + t.back + "</a></p>"; return; }
     var title = it["title_" + lang] || it.title;

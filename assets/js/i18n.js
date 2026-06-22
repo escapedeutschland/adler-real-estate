@@ -3,7 +3,7 @@
 window.I18N = {
   de: {
     "proto":"Vorschau-Entwurf · Bilder &amp; Anordnung zur Abstimmung · Texte aus der bestehenden Seite",
-    "nav.guide":"Ratgeber","nav.offer":"Angebot","nav.listings":"Objekte","nav.catalog":"Katalog","nav.about":"Über uns","nav.project":"Projekt","nav.news":"Newsletter","nav.contact":"Kontakt",
+    "nav.guide":"Ratgeber","nav.offer":"Angebot","nav.listings":"Objekte","nav.catalog":"Katalog","nav.service":"Service","nav.about":"Über uns","nav.project":"Projekt","nav.news":"Newsletter","nav.contact":"Kontakt",
     "list.catalogBtn":"Alle Objekte ansehen →",
     "cta.talk":"Erstgespräch",
     "buy.eyebrow":"Aufklärung & Sicherheit","buy.title":"So kauft man Immobilien in Paraguay","buy.intro":"Aus der Ferne zu kaufen macht nervös — zu Recht. Deshalb legen wir den gesamten Ablauf offen. Transparenz ist bei uns kein Versprechen, sondern die Grundlage.",
@@ -58,7 +58,7 @@ window.I18N = {
 
   es: {
     "proto":"Versión preliminar · imágenes y disposición por confirmar · textos de la página actual",
-    "nav.guide":"Guía","nav.offer":"Servicio","nav.listings":"Propiedades","nav.catalog":"Catálogo","nav.about":"Nosotros","nav.project":"Proyecto","nav.news":"Boletín","nav.contact":"Contacto",
+    "nav.guide":"Guía","nav.offer":"Servicio","nav.listings":"Propiedades","nav.catalog":"Catálogo","nav.service":"Servicio","nav.about":"Nosotros","nav.project":"Proyecto","nav.news":"Boletín","nav.contact":"Contacto",
     "list.catalogBtn":"Ver todos los inmuebles →",
     "cta.talk":"Hablemos",
     "buy.eyebrow":"Información y seguridad","buy.title":"Cómo comprar inmuebles en Paraguay","buy.intro":"Comprar a distancia inquieta — con razón. Por eso mostramos todo el proceso de forma abierta. Para nosotros la transparencia no es una promesa, es la base.",
@@ -113,7 +113,7 @@ window.I18N = {
 
   en: {
     "proto":"Preview draft · images & layout for review · text from the existing site",
-    "nav.guide":"Guide","nav.offer":"Services","nav.listings":"Properties","nav.catalog":"Catalogue","nav.about":"About","nav.project":"Project","nav.news":"Newsletter","nav.contact":"Contact",
+    "nav.guide":"Guide","nav.offer":"Services","nav.listings":"Properties","nav.catalog":"Catalogue","nav.service":"Service","nav.about":"About","nav.project":"Project","nav.news":"Newsletter","nav.contact":"Contact",
     "list.catalogBtn":"View all properties →",
     "cta.talk":"Let's talk",
     "buy.eyebrow":"Clarity & safety","buy.title":"How to buy property in Paraguay","buy.intro":"Buying from abroad is nerve-racking — understandably. That's why we lay out the entire process openly. For us, transparency isn't a promise; it's the foundation.",

@@ -157,7 +157,7 @@
     fType.value = ""; fLoc.value = ""; fPrice.value = ""; fSort.value = "default"; page = 1; render();
   });
 
-  fetch("assets/data/listings.json?v=15")
+  fetch("assets/data/listings.json?v=16")
     .then(function (r) { return r.json(); })
     .then(function (data) {
       all = data || [];

@@ -130,7 +130,7 @@
     section.hidden = false;
   }
   if (document.getElementById("videoScroller")) {
-    fetch("assets/data/listings.json?v=15").then(function (r) { return r.json(); }).then(function (data) {
+    fetch("assets/data/listings.json?v=16").then(function (r) { return r.json(); }).then(function (data) {
       videosData = data || [];
       renderVideos(activeLang);
     }).catch(function () {});
