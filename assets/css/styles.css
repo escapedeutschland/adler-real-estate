@@ -307,6 +307,33 @@ h3{font-size:1.35rem}
 .detail-desc .desc-list li{position:relative;padding-left:1.7rem;color:var(--ink-soft)}
 .detail-desc .desc-list li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--gold)}
 .detail-orig{margin-top:1.4rem;font-size:.88rem}
+.detail-video{margin-top:2.6rem}
+.detail-video h2{font-size:1.6rem;margin-bottom:1rem}
+.video-facade{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);border:1px solid var(--line);background:#000}
+.video-facade img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease,opacity .3s}
+.video-facade:hover img{transform:scale(1.03);opacity:.92}
+.video-facade .video-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.video-facade .video-play .vp-bg{fill:#212121;opacity:.82;transition:fill .2s,opacity .2s}
+.video-facade:hover .video-play .vp-bg{fill:#c00;opacity:1}
+.video-facade.playing{cursor:default}
+.video-facade iframe{width:100%;height:100%;border:0;display:block}
+
+/* ===== Video-Touren scroller (landing) ===== */
+.video-scroller{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x proximity;padding:.6rem .2rem 1.2rem;-webkit-overflow-scrolling:touch}
+.video-scroller::-webkit-scrollbar{height:8px}
+.video-scroller::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+.video-scroller::-webkit-scrollbar-track{background:transparent}
+.vid-card{flex:0 0 clamp(260px,80vw,310px);scroll-snap-align:start;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .25s ease,box-shadow .25s ease;text-decoration:none;color:inherit;display:block}
+.vid-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.vid-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000}
+.vid-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.vid-card:hover .vid-thumb img{transform:scale(1.05)}
+.vid-thumb .video-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.vid-thumb .video-play .vp-bg{fill:#212121;opacity:.82;transition:fill .2s,opacity .2s}
+.vid-card:hover .vid-thumb .video-play .vp-bg{fill:#c00;opacity:1}
+.vid-card-body{padding:1rem 1.1rem 1.2rem}
+.vid-card-body .card-loc{margin-bottom:.2rem}
+.vid-card-body h3{font-size:1.05rem;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media (max-width:760px){
   .detail-hero,.detail-grid{grid-template-columns:1fr}
   .detail-side{position:static}

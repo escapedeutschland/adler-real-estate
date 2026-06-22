@@ -108,6 +108,26 @@
     countEls.forEach(function (el) { co.observe(el); });
   }
 
+  /* ---------- Video-Touren (horizontal scroller, from listings.json) ---------- */
+  (function buildVideos() {
+    var section = document.getElementById("videos");
+    var track = document.getElementById("videoScroller");
+    if (!section || !track) return;
+    var esc = function (s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); };
+    var play = '<span class="video-play" aria-hidden="true"><svg viewBox="0 0 68 48" width="54" height="38"><path class="vp-bg" d="M66.5 7.7a8 8 0 0 0-5.6-5.7C56 .6 34 .6 34 .6s-22 0-26.9 1.4a8 8 0 0 0-5.6 5.7A83 83 0 0 0 .5 24a83 83 0 0 0 1 16.3 8 8 0 0 0 5.6 5.7C12 47.4 34 47.4 34 47.4s22 0 26.9-1.4a8 8 0 0 0 5.6-5.7A83 83 0 0 0 67.5 24a83 83 0 0 0-1-16.3z"/><path d="M27 34V14l18 10z" fill="#fff"/></svg></span>';
+    fetch("assets/data/listings.json?v=12").then(function (r) { return r.json(); }).then(function (data) {
+      var vids = (data || []).filter(function (l) { return l.video; });
+      if (!vids.length) return;
+      track.innerHTML = vids.map(function (l) {
+        return '<a class="vid-card" href="objekt.html?id=' + encodeURIComponent(l.id) + '">' +
+            '<div class="vid-thumb"><img src="https://i.ytimg.com/vi/' + esc(l.video) + '/hqdefault.jpg" loading="lazy" alt="" />' + play + "</div>" +
+            '<div class="vid-card-body"><p class="card-loc">' + esc(l.location || "Paraguay") + "</p><h3>" + esc(l.title || "") + "</h3></div>" +
+          "</a>";
+      }).join("");
+      section.hidden = false;
+    }).catch(function () {});
+  })();
+
   /* ---------- Year ---------- */
   document.getElementById("year").textContent = new Date().getFullYear();
 })();

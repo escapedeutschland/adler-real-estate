@@ -5,13 +5,13 @@
   var T = {
     de: { toCatalog:"← Katalog", req:"Auf Anfrage", inquire:"Jetzt anfragen", wa:"Hallo, ich interessiere mich für: ",
       type:"Typ", location:"Ort", size:"Fläche", beds:"Schlafzimmer", baths:"Badezimmer", year:"Baujahr", priceUsd:"ca. in USD",
-      orig:"Original-Inserat ansehen ↗", notfound:"Objekt nicht gefunden.", back:"Zum Katalog", desc:"Beschreibung", photos:"Fotos" },
+      orig:"Original-Inserat ansehen ↗", notfound:"Objekt nicht gefunden.", back:"Zum Katalog", desc:"Beschreibung", photos:"Fotos", video:"Video-Tour" },
     es: { toCatalog:"← Catálogo", req:"A consultar", inquire:"Consultar ahora", wa:"Hola, me interesa: ",
       type:"Tipo", location:"Lugar", size:"Superficie", beds:"Dormitorios", baths:"Baños", year:"Año de construcción", priceUsd:"aprox. en USD",
-      orig:"Ver anuncio original ↗", notfound:"Inmueble no encontrado.", back:"Al catálogo", desc:"Descripción", photos:"Fotos" },
+      orig:"Ver anuncio original ↗", notfound:"Inmueble no encontrado.", back:"Al catálogo", desc:"Descripción", photos:"Fotos", video:"Video" },
     en: { toCatalog:"← Catalogue", req:"On request", inquire:"Inquire now", wa:"Hello, I'm interested in: ",
       type:"Type", location:"Location", size:"Area", beds:"Bedrooms", baths:"Bathrooms", year:"Year built", priceUsd:"approx. in USD",
-      orig:"View original listing ↗", notfound:"Property not found.", back:"To the catalogue", desc:"Description", photos:"Photos" }
+      orig:"View original listing ↗", notfound:"Property not found.", back:"To the catalogue", desc:"Description", photos:"Photos", video:"Video tour" }
   };
   var TYPE = {
     de:{}, es:{"Villa & Haus":"Casa y villa","Grundstück":"Terreno","Gewerbe":"Comercial","Miete":"Alquiler","Nachbarschaft":"Barrio","Immobilie":"Inmueble"},
@@ -75,7 +75,7 @@
   var root = document.getElementById("detailRoot");
   var id = new URLSearchParams(location.search).get("id");
 
-  fetch("assets/data/listings.json").then(function (r) { return r.json(); }).then(function (data) {
+  fetch("assets/data/listings.json?v=12").then(function (r) { return r.json(); }).then(function (data) {
     var it = (data || []).filter(function (x) { return String(x.id) === String(id); })[0];
     if (!it) { root.innerHTML = '<p class="cat-empty">' + t.notfound + ' <a href="katalog.html" style="color:var(--gold-deep)">' + t.back + "</a></p>"; return; }
     document.title = it.title + " — ADLER Real Estate";
@@ -115,10 +115,19 @@
       ? '<div class="detail-desc"><h2>' + t.desc + "</h2>" + (it.descFull ? formatDesc(it.descFull) : "<p>" + esc(it.desc) + "</p>") + "</div>"
       : "";
 
+    var videoHTML = it.video
+      ? '<div class="detail-video"><h2>' + t.video + "</h2>" +
+          '<div class="video-facade" data-vid="' + esc(it.video) + '" role="button" tabindex="0" aria-label="' + esc(t.video) + '">' +
+            '<img src="https://i.ytimg.com/vi/' + esc(it.video) + '/hqdefault.jpg" alt="" loading="lazy" />' +
+            '<span class="video-play" aria-hidden="true"><svg viewBox="0 0 68 48" width="68" height="48"><path class="vp-bg" d="M66.5 7.7a8 8 0 0 0-5.6-5.7C56 .6 34 .6 34 .6s-22 0-26.9 1.4a8 8 0 0 0-5.6 5.7A83 83 0 0 0 .5 24a83 83 0 0 0 1 16.3 8 8 0 0 0 5.6 5.7C12 47.4 34 47.4 34 47.4s22 0 26.9-1.4a8 8 0 0 0 5.6-5.7A83 83 0 0 0 67.5 24a83 83 0 0 0-1-16.3z"/><path d="M27 34V14l18 10z" fill="#fff"/></svg></span>' +
+          "</div>" +
+        "</div>"
+      : "";
+
     root.innerHTML =
       '<a href="katalog.html" class="detail-back">' + t.toCatalog + "</a>" +
       '<div class="detail-grid">' +
-        '<div class="detail-main">' + galleryHTML + descBlock + "</div>" +
+        '<div class="detail-main">' + galleryHTML + videoHTML + descBlock + "</div>" +
         '<aside class="detail-side"><div class="detail-card">' +
           '<p class="card-loc">' + esc(it.location || "Paraguay") + "</p>" +
           "<h1 style=\"font-size:1.7rem;margin:.2rem 0 .6rem\">" + esc(it.title) + "</h1>" +
@@ -128,6 +137,25 @@
           (it.url ? '<p class="detail-orig"><a href="' + it.url + '" target="_blank" rel="noopener" style="color:var(--gold-deep);text-decoration:underline">' + t.orig + "</a></p>" : "") +
         "</div></aside>" +
       "</div>";
+
+    /* ---- video facade: load YouTube only on click (fast + privacy-friendly) ---- */
+    var facade = document.querySelector(".video-facade");
+    if (facade) {
+      var playVideo = function () {
+        var vid = facade.getAttribute("data-vid");
+        var fr = document.createElement("iframe");
+        fr.src = "https://www.youtube-nocookie.com/embed/" + vid + "?autoplay=1&rel=0";
+        fr.title = t.video;
+        fr.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        fr.allowFullscreen = true;
+        fr.loading = "lazy";
+        facade.innerHTML = "";
+        facade.classList.add("playing");
+        facade.appendChild(fr);
+      };
+      facade.addEventListener("click", playVideo);
+      facade.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playVideo(); } });
+    }
 
     if (!imgs.length) return;
 
