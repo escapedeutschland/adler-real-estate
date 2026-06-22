@@ -156,8 +156,14 @@
     fType.value = ""; fLoc.value = ""; fPrice.value = ""; fSort.value = "default"; page = 1; render();
   });
 
-  fetch("assets/data/listings.json?v=13")
+  fetch("assets/data/listings.json?v=14")
     .then(function (r) { return r.json(); })
-    .then(function (data) { all = data || []; buildFilters(); render(); })
+    .then(function (data) {
+      all = data || [];
+      buildFilters();
+      var qt = new URLSearchParams(location.search).get("type");
+      if (qt && Array.prototype.some.call(fType.options, function (op) { return op.value === qt; })) fType.value = qt;
+      render();
+    })
     .catch(function () { grid.innerHTML = ""; emptyEl.hidden = false; });
 })();

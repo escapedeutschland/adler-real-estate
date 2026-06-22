@@ -76,7 +76,7 @@
   var root = document.getElementById("detailRoot");
   var id = new URLSearchParams(location.search).get("id");
 
-  fetch("assets/data/listings.json?v=13").then(function (r) { return r.json(); }).then(function (data) {
+  fetch("assets/data/listings.json?v=14").then(function (r) { return r.json(); }).then(function (data) {
     var it = (data || []).filter(function (x) { return String(x.id) === String(id); })[0];
     if (!it) { root.innerHTML = '<p class="cat-empty">' + t.notfound + ' <a href="katalog.html" style="color:var(--gold-deep)">' + t.back + "</a></p>"; return; }
     document.title = it.title + " — ADLER Real Estate";
