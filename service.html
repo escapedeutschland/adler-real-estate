@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=17" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=18" />
 </head>
 <body>
   <header class="legal-header">
@@ -112,8 +112,22 @@
       </div>
     </section>
 
-    <!-- Drohnen-Galerie -->
+    <!-- Drohnen-Videos + Galerie -->
     <p class="svc-gcap" data-t="d_gcap">Überzeugen Sie sich selbst von der Qualität der Aufnahmen:</p>
+    <div class="svc-videos">
+      <div class="video-facade" data-vid="j8PGHk_h8kk" role="button" tabindex="0" aria-label="Video">
+        <img src="https://i.ytimg.com/vi/j8PGHk_h8kk/hqdefault.jpg" alt="" loading="lazy" />
+        <span class="video-play" aria-hidden="true"><svg viewBox="0 0 68 48" width="54" height="38"><path class="vp-bg" d="M66.5 7.7a8 8 0 0 0-5.6-5.7C56 .6 34 .6 34 .6s-22 0-26.9 1.4a8 8 0 0 0-5.6 5.7A83 83 0 0 0 .5 24a83 83 0 0 0 1 16.3 8 8 0 0 0 5.6 5.7C12 47.4 34 47.4 34 47.4s22 0 26.9-1.4a8 8 0 0 0 5.6-5.7A83 83 0 0 0 67.5 24a83 83 0 0 0-1-16.3z"/><path d="M27 34V14l18 10z" fill="#fff"/></svg></span>
+      </div>
+      <div class="video-facade" data-vid="JZQrC0n7e6g" role="button" tabindex="0" aria-label="Video">
+        <img src="https://i.ytimg.com/vi/JZQrC0n7e6g/hqdefault.jpg" alt="" loading="lazy" />
+        <span class="video-play" aria-hidden="true"><svg viewBox="0 0 68 48" width="54" height="38"><path class="vp-bg" d="M66.5 7.7a8 8 0 0 0-5.6-5.7C56 .6 34 .6 34 .6s-22 0-26.9 1.4a8 8 0 0 0-5.6 5.7A83 83 0 0 0 .5 24a83 83 0 0 0 1 16.3 8 8 0 0 0 5.6 5.7C12 47.4 34 47.4 34 47.4s22 0 26.9-1.4a8 8 0 0 0 5.6-5.7A83 83 0 0 0 67.5 24a83 83 0 0 0-1-16.3z"/><path d="M27 34V14l18 10z" fill="#fff"/></svg></span>
+      </div>
+      <div class="video-facade" data-vid="IHA22smtQxg" role="button" tabindex="0" aria-label="Video">
+        <img src="https://i.ytimg.com/vi/IHA22smtQxg/hqdefault.jpg" alt="" loading="lazy" />
+        <span class="video-play" aria-hidden="true"><svg viewBox="0 0 68 48" width="54" height="38"><path class="vp-bg" d="M66.5 7.7a8 8 0 0 0-5.6-5.7C56 .6 34 .6 34 .6s-22 0-26.9 1.4a8 8 0 0 0-5.6 5.7A83 83 0 0 0 .5 24a83 83 0 0 0 1 16.3 8 8 0 0 0 5.6 5.7C12 47.4 34 47.4 34 47.4s22 0 26.9-1.4a8 8 0 0 0 5.6-5.7A83 83 0 0 0 67.5 24a83 83 0 0 0-1-16.3z"/><path d="M27 34V14l18 10z" fill="#fff"/></svg></span>
+      </div>
+    </div>
     <div class="svc-aerials">
       <img src="assets/img/service/aerial-1.jpg" alt="" loading="lazy" />
       <img src="assets/img/service/aerial-2.jpg" alt="" loading="lazy" />
@@ -198,6 +212,20 @@
       });
     });
     var yr = document.getElementById("year"); if (yr) yr.textContent = new Date().getFullYear();
+
+    document.querySelectorAll(".video-facade").forEach(function (f) {
+      function play() {
+        var v = f.getAttribute("data-vid");
+        var fr = document.createElement("iframe");
+        fr.src = "https://www.youtube-nocookie.com/embed/" + v + "?autoplay=1&rel=0";
+        fr.title = "Video";
+        fr.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        fr.allowFullscreen = true; fr.loading = "lazy";
+        f.innerHTML = ""; f.classList.add("playing"); f.appendChild(fr);
+      }
+      f.addEventListener("click", play);
+      f.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); play(); } });
+    });
   })();
   </script>
 </body>
