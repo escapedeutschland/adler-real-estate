@@ -111,9 +111,14 @@
         }).join("") + "</div>" : "") +
       "</div>";
 
+    var descBlock = (it.descFull || it.desc)
+      ? '<div class="detail-desc"><h2>' + t.desc + "</h2>" + (it.descFull ? formatDesc(it.descFull) : "<p>" + esc(it.desc) + "</p>") + "</div>"
+      : "";
+
     root.innerHTML =
       '<a href="katalog.html" class="detail-back">' + t.toCatalog + "</a>" +
-      '<div class="detail-hero">' + galleryHTML +
+      '<div class="detail-grid">' +
+        '<div class="detail-main">' + galleryHTML + descBlock + "</div>" +
         '<aside class="detail-side"><div class="detail-card">' +
           '<p class="card-loc">' + esc(it.location || "Paraguay") + "</p>" +
           "<h1 style=\"font-size:1.7rem;margin:.2rem 0 .6rem\">" + esc(it.title) + "</h1>" +
@@ -122,8 +127,7 @@
           '<a class="btn btn-gold btn-block" target="_blank" rel="noopener" href="https://wa.me/595981152015?text=' + waMsg + '">' + t.inquire + "</a>" +
           (it.url ? '<p class="detail-orig"><a href="' + it.url + '" target="_blank" rel="noopener" style="color:var(--gold-deep);text-decoration:underline">' + t.orig + "</a></p>" : "") +
         "</div></aside>" +
-      "</div>" +
-      ((it.descFull || it.desc) ? '<div class="detail-desc"><h2>' + t.desc + "</h2>" + (it.descFull ? formatDesc(it.descFull) : "<p>" + esc(it.desc) + "</p>") + "</div>" : "");
+      "</div>";
 
     if (!imgs.length) return;
 

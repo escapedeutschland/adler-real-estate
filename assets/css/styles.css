@@ -286,7 +286,8 @@ h3{font-size:1.35rem}
 .detail{padding:clamp(2rem,5vw,3.2rem) 0}
 .detail-back{font-size:.9rem;color:var(--ink-soft);font-weight:500;display:inline-block;margin-bottom:1.4rem}
 .detail-back:hover{color:var(--gold-deep)}
-.detail-hero{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,.45fr);gap:2.2rem;align-items:start}
+.detail-hero,.detail-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.4fr);gap:2.4rem;align-items:start}
+.detail-main{min-width:0}
 .gallery{min-width:0}
 .detail-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
 .detail-img img{width:100%;display:block}
@@ -298,16 +299,16 @@ h3{font-size:1.35rem}
 .detail-facts{list-style:none;margin:1.3rem 0;display:grid;gap:.55rem}
 .detail-facts li{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dashed var(--line);padding-bottom:.5rem;font-size:.92rem;color:var(--ink-soft)}
 .detail-facts li span:first-child{color:var(--ink);font-weight:500}
-.detail-desc{margin-top:2.4rem;max-width:780px}
+.detail-desc{margin-top:2.6rem}
 .detail-desc h2{font-size:1.6rem;margin-bottom:1rem}
 .detail-desc h4{font-family:var(--serif);color:var(--navy);font-size:1.25rem;margin:1.8rem 0 .5rem}
-.detail-desc p{color:var(--ink-soft);margin-bottom:1rem;line-height:1.7}
+.detail-desc p{color:var(--ink-soft);margin-bottom:1rem;line-height:1.75;text-align:justify;-webkit-hyphens:auto;hyphens:auto;text-wrap:pretty}
 .detail-desc .desc-list{list-style:none;display:grid;gap:.55rem;margin:1.1rem 0 1.4rem}
 .detail-desc .desc-list li{position:relative;padding-left:1.7rem;color:var(--ink-soft)}
 .detail-desc .desc-list li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--gold)}
 .detail-orig{margin-top:1.4rem;font-size:.88rem}
 @media (max-width:760px){
-  .detail-hero{grid-template-columns:1fr}
+  .detail-hero,.detail-grid{grid-template-columns:1fr}
   .detail-side{position:static}
   .cat-head-actions .legal-back{display:none}
 }
